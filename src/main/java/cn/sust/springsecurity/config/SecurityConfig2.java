@@ -28,7 +28,10 @@ public class SecurityConfig2 extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/user/login")
                 .defaultSuccessUrl("/test/index").permitAll()   //登录之后的跳转路径
                 .and().authorizeRequests()
-                .mvcMatchers("/", "/user/login","/test/hello").permitAll() //设置哪些路径可以直接访问不需要认证
+                .mvcMatchers("/", "/user/login", "/test/hello").permitAll() //设置哪些路径可以直接访问不需要认证
+            //    .mvcMatchers("/test/index").hasAuthority("admin")   //查询的用户有这个权限才能访问
+            //    .mvcMatchers("/test/index").hasAnyAuthority("admin,manager")
+                .mvcMatchers("/test/index").hasRole("sale")
                 .anyRequest().authenticated()  //表示除了上面的路径其他都需要认证
                 .and().csrf().disable();  //关闭csrf防护
     }
