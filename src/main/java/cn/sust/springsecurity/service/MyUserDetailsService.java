@@ -35,7 +35,7 @@ public class MyUserDetailsService implements UserDetailsService {
         }
         System.out.println(users);
         List<GrantedAuthority> authorities =
-                AuthorityUtils.commaSeparatedStringToAuthorityList("manager,ROLE_sale");
+                AuthorityUtils.commaSeparatedStringToAuthorityList("manager");
         return new User(users.getUsername(),
                 new BCryptPasswordEncoder().encode(users.getPassword()),
                 authorities);

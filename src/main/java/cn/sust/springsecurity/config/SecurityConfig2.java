@@ -22,6 +22,7 @@ public class SecurityConfig2 extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.exceptionHandling().accessDeniedPage("/403.html");
         http.formLogin()   //自定义登录页面
                 .loginPage("/login.html")   //登录页面设置
                 //登录访问路径(相当于一个控制器,只不过是框架帮我们完成了逻辑判断,登录的表单数据应该往这个控制器发送)
